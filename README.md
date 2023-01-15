@@ -6,6 +6,9 @@
 ## Characters:
 ### Skomp
 ![New Piskel](https://user-images.githubusercontent.com/55769045/212519639-2ce68f06-70c7-48df-ac4b-9795eb4d2ddc.gif)
+### Lily
+![image](https://user-images.githubusercontent.com/55769045/212523580-ccb26e84-677a-4da7-88b2-d3ba330ce0cf.png)
+
 
 ## Bosses:
 ### Groog
