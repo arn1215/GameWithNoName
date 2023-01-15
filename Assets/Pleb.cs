@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Pleb : MonoBehaviour
 {
-    public float speed = 5.1f; // adjust this to change the speed of the movement
+    public float speed = 1.1f; // adjust this to change the speed of the movement
+
+    public float value = 1.0f;
+
+    public bool IsFacingRight = true;
 
     private Rigidbody2D rb;
 
@@ -13,6 +17,30 @@ public class Pleb : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(-speed, rb.velocity.y);
+        if (IsFacingRight)
+        {
+            rb.velocity = new Vector2(-speed, 0f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(speed, 0f);
+        }
+    }
+
+    // public bool IsFacingRight()
+    // {
+    //     return transform.localScale.x > Mathf.Epsilon;
+    // }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (IsFacingRight)
+        {
+            transform.localScale = new Vector2(-1f, transform.localScale.y);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1f, transform.localScale.y);
+        }
+        IsFacingRight = !IsFacingRight;
     }
 }
