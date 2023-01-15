@@ -1,5 +1,9 @@
 # GameWithNoName
 
+## Outline:
+(updating as I go)
+https://excalidraw.com/
+
 ## Characters:
 ### Skomp
 ![New Piskel](https://user-images.githubusercontent.com/55769045/212519639-2ce68f06-70c7-48df-ac4b-9795eb4d2ddc.gif)
