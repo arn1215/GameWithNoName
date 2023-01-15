@@ -7,6 +7,15 @@
 ### Skomp
 ![New Piskel](https://user-images.githubusercontent.com/55769045/212519639-2ce68f06-70c7-48df-ac4b-9795eb4d2ddc.gif)
 
+## Bosses:
+### Groog
+![Dude guy man](https://user-images.githubusercontent.com/55769045/212520821-ef331334-af8f-409c-b3e2-ff9b318b6be0.png)
+
+## Basic Enemies:
+### Pleb
+![New Piskel (1)](https://user-images.githubusercontent.com/55769045/212521025-ab886e52-a62e-49d0-a0ff-d5e40e2e8eae.gif)
+
+
 ## Buffs:
 ### Juice
 ![Juice](https://user-images.githubusercontent.com/55769045/212519641-a4889408-bc6b-466d-b5c6-05f51021f12c.png)
