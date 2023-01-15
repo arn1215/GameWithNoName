@@ -8,6 +8,8 @@ public class Pleb : MonoBehaviour
 
     public bool IsFacingLeft = true;
 
+    public PlayerHealth playerHealth;
+
     private Rigidbody2D rb;
 
     private void Start()
@@ -33,6 +35,10 @@ public class Pleb : MonoBehaviour
     // }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(10);
+        }
         if (IsFacingLeft)
         {
             transform.localScale = new Vector2(-1f, transform.localScale.y);
