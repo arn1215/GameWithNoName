@@ -6,7 +6,7 @@ public class Pleb : MonoBehaviour
 
     public float value = 1.0f;
 
-    public bool IsFacingRight = true;
+    public bool IsFacingLeft = true;
 
     private Rigidbody2D rb;
 
@@ -17,7 +17,7 @@ public class Pleb : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsFacingRight)
+        if (IsFacingLeft)
         {
             rb.velocity = new Vector2(-speed, 0f);
         }
@@ -27,13 +27,13 @@ public class Pleb : MonoBehaviour
         }
     }
 
-    // public bool IsFacingRight()
+    // public bool IsFacingLeft()
     // {
     //     return transform.localScale.x > Mathf.Epsilon;
     // }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsFacingRight)
+        if (IsFacingLeft)
         {
             transform.localScale = new Vector2(-1f, transform.localScale.y);
         }
@@ -41,6 +41,6 @@ public class Pleb : MonoBehaviour
         {
             transform.localScale = new Vector2(1f, transform.localScale.y);
         }
-        IsFacingRight = !IsFacingRight;
+        IsFacingLeft = !IsFacingLeft;
     }
 }
