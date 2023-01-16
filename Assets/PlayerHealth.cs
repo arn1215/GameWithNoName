@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public long maxHealth = 100;
+    public AudioSource damageSound;
 
     public long health;
 
@@ -22,9 +23,12 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(long damage)
     {
         health = health - damage;
+        
         if (health <= 0)
         {
             Destroy (gameObject);
+        } else {
+            damageSound.Play();
         }
     }
 }

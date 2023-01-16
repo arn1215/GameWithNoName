@@ -13,7 +13,7 @@ public class JumpDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pleb")
         {
-            plebHealth.TakeDamage (damage);
+           Destroy(collision.gameObject);
         }
     }
 }

@@ -14,7 +14,7 @@ public class PlebDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             damage = 10;
-            playerHealth.TakeDamage(0);
+            playerHealth.TakeDamage(10);
         }
     }
 }

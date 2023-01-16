@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlebSpawnScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject Pleb;
+    
+
+    public List<GameObject> Enemies = new List<GameObject>();
 
     public float spawnRate = 2;
+
+    
 
     private float timer = 0;
 
@@ -36,11 +40,13 @@ public class PlebSpawnScript : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;
-
-        Instantiate(Pleb,
+        var thing = 
+        Instantiate(Enemies[0],
         new Vector3(transform.position.x,
             Random.Range(lowestPoint, highestPoint),
             0),
         transform.rotation);
+
+        thing.SetActive(true);
     }
 }
