@@ -6,6 +6,8 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public Animator animator;
 
+    public AudioClip[] audioArray;
+
     public Rigidbody2D mainCharacter;
 
     public AudioSource jump;
@@ -31,6 +33,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             mainCharacter.AddForce(new Vector2(0f, jumpForce));
+            jump.clip = audioArray[Random.Range(0, audioArray.Length)];
             jump.Play();
         }
     }
