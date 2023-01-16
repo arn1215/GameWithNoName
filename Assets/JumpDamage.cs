@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlebDamage : MonoBehaviour
+public class JumpDamage : MonoBehaviour
 {
     // Start is called before the first frame update
-    public long damage;
+    public int damage = 100;
 
-    public PlayerHealth playerHealth;
+    public PlebHealth plebHealth;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Pleb")
         {
-            damage = 10;
-            playerHealth.TakeDamage(0);
+            plebHealth.TakeDamage (damage);
         }
     }
 }
