@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pleb
+  - Weak Point
+  - Foot
+  - Pleb Point
+  - Bullet
+  - Boundary
   layers:
   - Default
   - TransparentFX

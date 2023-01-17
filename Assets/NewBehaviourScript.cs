@@ -29,7 +29,7 @@ public class NewBehaviourScript : MonoBehaviour
                 0.0f);
         Vector3 vertical = new Vector3(Input.GetAxis("Vertical"), 0.0f, 1.0f);
         transform.position =
-            transform.position + movement * Time.deltaTime * 2.0f;
+            transform.position + movement * Time.deltaTime * 1.2f;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             mainCharacter.AddForce(new Vector2(0f, jumpForce));

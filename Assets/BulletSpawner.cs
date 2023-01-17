@@ -12,6 +12,8 @@ public class BulletSpawner : MonoBehaviour
     public float spawnRate;
 
     private float timer = 0;
+    
+    public AudioSource bulletShoot;
 
     public float heightOffset = 0;
 
@@ -45,7 +47,7 @@ public class BulletSpawner : MonoBehaviour
             Random.Range(lowestPoint, highestPoint),
             0),
         transform.rotation);
-
+        bulletShoot.Play();
         thing.SetActive(true);
 
 

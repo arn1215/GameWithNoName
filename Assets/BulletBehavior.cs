@@ -6,6 +6,7 @@ public class BulletBehavior : MonoBehaviour
 {
     public Rigidbody2D bullet;
     public GameObject bulletObj;  
+   
     public int speed = 100; 
     public float position; 
     // Start is called before the first frame update
