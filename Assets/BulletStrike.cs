@@ -6,12 +6,21 @@ public class BulletStrike : MonoBehaviour
 {
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Pleb Point" && gameObject.tag == "Bullet")
+        
+         if (collision.gameObject.tag == "Boundary" && gameObject.tag == "Bullet")
         {
-            print(collision.gameObject);
+      
+      
+            Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.tag == "Pleb Point" && gameObject.tag == "Bullet")
+        {
+      
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
     }
 
     void Update() 
