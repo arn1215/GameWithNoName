@@ -6,6 +6,9 @@ public class BulletBehavior : MonoBehaviour
 {
     public Rigidbody2D bullet;
     public GameObject bulletObj;  
+    public GameObject player;
+    public bool isFacingRight = true;
+
    
     public int speed = 100; 
     public float position; 
@@ -17,8 +20,21 @@ public class BulletBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-         bullet.velocity = new Vector2(speed, 0f);
+    {    
+          if (Input.GetKeyDown(KeyCode.A)) {
+             isFacingRight = false;  
+          } 
+           if (Input.GetKeyDown(KeyCode.D)) {
+               isFacingRight = true;
+          }
+
+         if (isFacingRight) {
+            
+            bullet.velocity = new Vector2(speed, 0f);
+         } else if (!isFacingRight) {
+            bullet.velocity = new Vector2(-speed, 0f);
+         }
+
          if (bulletObj.transform.position.x - position > 3) {
             Destroy(gameObject);
          }

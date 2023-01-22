@@ -27,7 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
             new Vector3(Input.GetAxis("Horizontal"),
                 Input.GetAxis("Vertical"),
                 0.0f);
-        Vector3 vertical = new Vector3(Input.GetAxis("Vertical"), 0.0f, 1.0f);
+        // Vector3 vertical = new Vector3(Input.GetAxis("Vertical"), 0.0f, 1.0f);
         transform.position =
             transform.position + movement * Time.deltaTime * 1.2f;
         if (Input.GetKeyDown(KeyCode.Space))
