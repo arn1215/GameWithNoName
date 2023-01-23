@@ -12,8 +12,11 @@ public class Character2DController : MonoBehaviour
 
     public Rigidbody2D rigidBody;
 
+    private Camera camera;
+
     private void Start()
     {
+        camera = Camera.main;
     }
 
     private void Update()
@@ -27,17 +30,17 @@ public class Character2DController : MonoBehaviour
         //calculate angle of projectile
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint =
-            Camera.main.WorldToScreenPoint(transform.localPosition);
+            camera.WorldToScreenPoint(transform.localPosition);
 
         if (mousePosition.x < screenPoint.x)
         {
             transform.localScale = new Vector3(-1.69f, 1.69f, 1f);
-            projectileOrigin.localScale = new Vector3(-0.08f, -0.08f, 1f);
+            projectileOrigin.localScale = new Vector3(-1f, -1f, 0f);
         }
         else
         {
             transform.localScale = new Vector3(1.69f, 1.69f, 1f);
-            projectileOrigin.localScale = new Vector3(0.08f, 0.08f, 1f);
+            projectileOrigin.localScale = new Vector3(1f, 1f, 0f);
         }
 
         //rotate arm
