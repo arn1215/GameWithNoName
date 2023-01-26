@@ -27,6 +27,9 @@ public class Character2DController : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
+        //keeps player speed even when going diagonal
+        moveInput.Normalize();
+
         rigidBody.velocity = MovementSpeed * moveInput;
 
         //calculate angle of projectile
@@ -59,7 +62,7 @@ public class Character2DController : MonoBehaviour
         {
             anim.SetBool("isMoving", true);
         } else {
-            anim.SetBool("isMoving", true);
+            anim.SetBool("isMoving", false);
         } 
 
 
