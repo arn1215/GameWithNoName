@@ -16,6 +16,16 @@ public class Character2DController : MonoBehaviour
 
     private Camera camera;
 
+    public GameObject theProjectile;
+
+    public Transform firePoint;
+
+    public float spawnRate = 0.5f;
+
+    public AudioSource audioSrc;
+
+    private float timer = 0;
+
     private void Start()
     {
         camera = Camera.main;
@@ -48,7 +58,7 @@ public class Character2DController : MonoBehaviour
             projectileOrigin.localScale = new Vector3(1f, 1f, 0f);
         }
 
-        //rotate arm
+        //=======================================================================//rotate arm
         Vector2 offset =
             new Vector2(mousePosition.x - screenPoint.x,
                 mousePosition.y - screenPoint.y);
@@ -56,19 +66,31 @@ public class Character2DController : MonoBehaviour
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         projectileOrigin.rotation = Quaternion.Euler(0, 0, angle);
 
-        //walking animation
+        //firepoint.rotation makes it so lily can fire bullets in the direction the mouse is
+        if (timer < spawnRate)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            spawnProjectile();
+            timer = 0;
+        }
 
+        //=====================================================================walking animation
         if (moveInput != Vector2.zero)
         {
             anim.SetBool("isMoving", true);
-        } else {
+        }
+        else
+        {
             anim.SetBool("isMoving", false);
-        } 
-
-
+        }
     }
 
     void spawnProjectile()
     {
+        Instantiate(theProjectile, firePoint.position, firePoint.rotation);
+        audioSrc.Play();
     }
 }
