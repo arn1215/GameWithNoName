@@ -12,6 +12,8 @@ public class Character2DController : MonoBehaviour
 
     public Rigidbody2D rigidBody;
 
+    public Animator anim;
+
     private Camera camera;
 
     private void Start()
@@ -50,6 +52,17 @@ public class Character2DController : MonoBehaviour
 
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
         projectileOrigin.rotation = Quaternion.Euler(0, 0, angle);
+
+        //walking animation
+
+        if (moveInput != Vector2.zero)
+        {
+            anim.SetBool("isMoving", true);
+        } else {
+            anim.SetBool("isMoving", true);
+        } 
+
+
     }
 
     void spawnProjectile()
