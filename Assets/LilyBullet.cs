@@ -27,4 +27,9 @@ public class LilyBullet : MonoBehaviour
             Destroy (gameObject);
         }
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy (gameObject);
+    }
 }
