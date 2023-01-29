@@ -8,6 +8,10 @@ public class LilyBullet : MonoBehaviour
 
     public Rigidbody2D rigidBody;
 
+    public GameObject impactEffect;
+
+    public int dmgToGive = 100;
+
     void Start()
     {
     }
@@ -16,14 +20,23 @@ public class LilyBullet : MonoBehaviour
     void Update()
     {
         rigidBody.velocity = transform.right * speed;
+
+        if (rigidBody.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(0.5f, -0.5f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Boundary" && other.gameObject.tag != "Lily"
-        )
+        if (other.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            other.GetComponent<EnemyScript>().DamageEnemy(dmgToGive);
             Destroy (gameObject);
         }
     }

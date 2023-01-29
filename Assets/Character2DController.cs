@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character2DController : MonoBehaviour
 {
+    public static Character2DController instance;
+
     public float MovementSpeed = 3;
 
     public Transform projectileOrigin;
@@ -25,6 +27,11 @@ public class Character2DController : MonoBehaviour
     public AudioSource audioSrc;
 
     private float timer = 0;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {

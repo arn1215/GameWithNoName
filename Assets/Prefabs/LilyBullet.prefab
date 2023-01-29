@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e805e4850252fd44be7edf43f1cb770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   rigidBody: {fileID: 4238946390610088966}
+  impactEffect: {fileID: 2397009652526797163, guid: a06d137a0200ea3439733719851054d9, type: 3}
 --- !u!212 &4238946390610088984
 SpriteRenderer:
   m_ObjectHideFlags: 0
