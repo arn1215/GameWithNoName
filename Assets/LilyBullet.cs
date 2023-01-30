@@ -12,6 +12,8 @@ public class LilyBullet : MonoBehaviour
 
     public int dmgToGive = 100;
 
+    public AudioSource enemyHit;
+
     void Start()
     {
     }
@@ -35,10 +37,19 @@ public class LilyBullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            StartCoroutine(PlaySound());
+
             Instantiate(impactEffect, transform.position, transform.rotation);
+
             other.GetComponent<EnemyScript>().DamageEnemy(dmgToGive);
-            Destroy (gameObject);
         }
+    }
+
+    IEnumerator PlaySound()
+    {
+        enemyHit.Play();
+        yield return new WaitForSeconds(0.02f);
+        Destroy (gameObject);
     }
 
     private void OnBecameInvisible()
