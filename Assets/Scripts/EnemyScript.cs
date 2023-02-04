@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     public float distanceThreshold = 1f;
 
     public AudioSource enemyHit;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -94,8 +95,11 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy (gameObject);
+            KillCount.count += 1;
             enemyHit.Play();
+      
+            Destroy (gameObject);
         }
+
     }
 }
