@@ -6,6 +6,8 @@ public class EnemyScript : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
 
+    public GameObject healthAsset;
+
     public float moveSpeed;
 
     public float rangeToChasePlayer;
@@ -20,8 +22,9 @@ public class EnemyScript : MonoBehaviour
 
     public float distanceThreshold = 1f;
 
+    public float dropChance = 0.5f;
+
     public AudioSource enemyHit;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +73,7 @@ public class EnemyScript : MonoBehaviour
                 Character2DController.instance.transform.position);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -97,9 +100,19 @@ public class EnemyScript : MonoBehaviour
         {
             KillCount.count += 1;
             enemyHit.Play();
-      
-            Destroy (gameObject);
-        }
 
+            Destroy (gameObject);
+            RandomDrop();
+        }
+    }
+
+    public void RandomDrop()
+    {
+        float randomValue = Random.Range(0f, 1f);
+
+        if (randomValue <= dropChance)
+        {
+            Instantiate(healthAsset, transform.position, transform.rotation);
+        }
     }
 }

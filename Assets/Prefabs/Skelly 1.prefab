@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7266159523905591245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.904, y: -0.0758, z: 0}
+  m_LocalPosition: {x: 0.904, y: -0.081, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52,12 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7266159523905591240}
-  moveSpeed: 0.36
+  healthAsset: {fileID: 2097184236386686950, guid: be6b032e400fd404d8fd323806c673be, type: 3}
+  moveSpeed: 0.2
   rangeToChasePlayer: 12.72
   anim: {fileID: 7266159523905591223}
   health: 100
   forceAmount: 100
   distanceThreshold: 0.31
+  dropChance: 0.05
   enemyHit: {fileID: 500955898211427283, guid: 920b9094f8a7fcb438e1a30ec0053643, type: 3}
 --- !u!61 &7266159523905591241
 BoxCollider2D:
@@ -182,7 +184,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.24, y: 0.26}
+  m_Size: {x: 0.27, y: 0.26}
   m_Direction: 0
 --- !u!1 &7266159524124439275
 GameObject:

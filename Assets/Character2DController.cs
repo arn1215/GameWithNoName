@@ -95,11 +95,7 @@ public class Character2DController : MonoBehaviour
         }
 
 
-        //=====================================================================PROJECTILE rate
-        if (spawnRate > 0.10f) {
 
-            spawnRate -= 0.000008f;
-        }
     }
 
     public void speedUp()
