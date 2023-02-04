@@ -7,13 +7,35 @@ public class SeekPlayer : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody2D rigidBody;
 
-    public float moveSpeed;
+    public float moveSpeed = 5f;
 
     public float rangeToChasePlayer;
 
     public Vector3 moveDirection;
 
+    public AudioSource audio;
+
     void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SeekPlayerLogic();
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        //increment health and delete heart when it has reached player
+        if (other.tag == "Player")
+        {
+            StartCoroutine(PlaySound());
+        }
+    }
+
+    //function that tracks and follows player with current gameobj
+    public void SeekPlayerLogic()
     {
         if (
             Vector3
@@ -45,8 +67,11 @@ public class SeekPlayer : MonoBehaviour
                 Character2DController.instance.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator PlaySound()
     {
+        audio.Play();
+        LilyHealth.instance.HealPlayer(25);
+        yield return new WaitForSeconds(.8f);
+        Destroy (gameObject);
     }
 }

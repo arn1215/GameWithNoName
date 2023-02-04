@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour
 
     public float distanceThreshold = 1f;
 
-    public float dropChance = 0.5f;
+    public float dropChance = 0.9f;
 
     public AudioSource enemyHit;
 
@@ -103,6 +103,11 @@ public class EnemyScript : MonoBehaviour
 
             Destroy (gameObject);
             RandomDrop();
+
+            if (Character2DController.instance.spawnRate > 0.3f)
+            {
+                Character2DController.instance.speedUp();
+            }
         }
     }
 

@@ -3,7 +3,9 @@ guid: 4f30cecf089e0854398c3c7ec7a567e1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audio: {fileID: 500955898211427283, guid: 920b9094f8a7fcb438e1a30ec0053643, type: 3}
+  - deathScreen: {fileID: 2000751125519990273, guid: cb45606d983f61b4e81ff0787ee0e83c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

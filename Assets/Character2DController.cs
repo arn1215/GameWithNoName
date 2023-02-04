@@ -93,14 +93,11 @@ public class Character2DController : MonoBehaviour
         {
             anim.SetBool("isMoving", false);
         }
-
-
-
     }
 
     public void speedUp()
     {
-        spawnRate -= 0.5f;
+        spawnRate -= 0.0008f;
     }
 
     void spawnProjectile()

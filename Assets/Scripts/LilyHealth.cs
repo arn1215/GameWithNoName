@@ -53,4 +53,9 @@ public class LilyHealth : MonoBehaviour
             deathScreen.SetActive(true);
         }
     }
+
+    public void HealPlayer(int healthAmount)
+    {
+        currentHealth += healthAmount;
+    }
 }
