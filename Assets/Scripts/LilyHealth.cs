@@ -42,9 +42,17 @@ public class LilyHealth : MonoBehaviour
         }
     }
 
-    public void DamagePlayer()
+    public void DamagePlayer(int damage = 0)
     {
-        currentHealth--;
+        //all hits will do only 1 damage unless DamagePlayer is called with the damage amount
+        if (damage == 0)
+        {
+            currentHealth--;
+        }
+        else
+        {
+            currentHealth -= damage;
+        }
         audio.Play();
 
         if (currentHealth <= 0)

@@ -22,9 +22,19 @@ public class EnemyScript : MonoBehaviour
 
     public float distanceThreshold = 1f;
 
-    public float dropChance = 0.9f;
+    public float dropChance;
 
     public AudioSource enemyHit;
+
+    public bool isShooter;
+
+    public GameObject projectile;
+
+    public Transform firePoint;
+
+    public float fireRate;
+
+    private float fireCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +81,18 @@ public class EnemyScript : MonoBehaviour
             Vector2
                 .Distance(transform.position,
                 Character2DController.instance.transform.position);
+
+        //================================================================shooting logic
+        if (isShooter)
+        {
+            fireCounter -= Time.deltaTime;
+
+            if (fireCounter <= 0)
+            {
+                fireCounter = fireRate;
+                Instantiate(projectile, transform.position, transform.rotation);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -114,7 +136,7 @@ public class EnemyScript : MonoBehaviour
     public void RandomDrop()
     {
         float randomValue = Random.Range(0f, 1f);
-
+        Debug.Log (randomValue);
         if (randomValue <= dropChance)
         {
             Instantiate(healthAsset, transform.position, transform.rotation);
