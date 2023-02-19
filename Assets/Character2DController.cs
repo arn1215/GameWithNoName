@@ -56,12 +56,12 @@ public class Character2DController : MonoBehaviour
 
         if (mousePosition.x < screenPoint.x)
         {
-            transform.localScale = new Vector3(-1.69f, 1.69f, 1f);
+            transform.localScale = new Vector3(-1.00f, 1.00f, 1f);
             projectileOrigin.localScale = new Vector3(-1f, -1f, 0f);
         }
         else
         {
-            transform.localScale = new Vector3(1.69f, 1.69f, 1f);
+            transform.localScale = new Vector3(1.00f, 1.00f, 1f);
             projectileOrigin.localScale = new Vector3(1f, 1f, 0f);
         }
 
