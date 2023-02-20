@@ -112,6 +112,11 @@ public class EnemyScript : MonoBehaviour
             // Apply the force to the object
             rigidBody.AddForce(-forceDirection * forceAmount);
         }
+        else if (other.CompareTag("Boundary"))
+        {
+            // Ignore collision with the obstacle
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other, true);
+        }
     }
 
     public void DamageEnemy(int damage)

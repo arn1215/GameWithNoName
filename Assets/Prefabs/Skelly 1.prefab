@@ -85,8 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7266159523905591240}
   healthAsset: {fileID: 2097184236386686950, guid: be6b032e400fd404d8fd323806c673be, type: 3}
-  moveSpeed: 0.2
-  rangeToChasePlayer: 12.72
+  moveSpeed: 0.5
+  rangeToChasePlayer: 20
   anim: {fileID: 7266159523905591223}
   health: 100
   forceAmount: 100
