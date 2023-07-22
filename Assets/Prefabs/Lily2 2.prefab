@@ -166,7 +166,7 @@ MonoBehaviour:
   anim: {fileID: 2249793917998970497}
   theProjectile: {fileID: 4238946390610088985, guid: 07755712d8568fa47ad98aa707bed26a, type: 3}
   firePoint: {fileID: 3128152202938062888}
-  spawnRate: 0.59
+  spawnRate: 0.46
   audioSrc: {fileID: 2249793917998970509}
 --- !u!70 &2249793917998970505
 CapsuleCollider2D:

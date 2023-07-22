@@ -7,7 +7,7 @@ public class PlebSpawnScript : MonoBehaviour
     // Start is called before the first frame update
     public List<GameObject> Enemies = new List<GameObject>();
 
-    public float spawnRate = 2;
+    public double spawnRate = 1;
 
     public float dropChance;
 
@@ -19,6 +19,8 @@ public class PlebSpawnScript : MonoBehaviour
     void Start()
     {
         dropChance = 0.1f;
+        PlebSpawnScript scriptComponent = GetComponent<PlebSpawnScript>();
+        scriptComponent.spawnRate = 0.02;
     }
 
     // Update is called once per frame

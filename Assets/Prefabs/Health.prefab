@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 2511447945576462358}
-  moveSpeed: 4.51
+  moveSpeed: 8
   rangeToChasePlayer: 60.17
   moveDirection: {x: 0, y: 0, z: 0}
   audio: {fileID: 2874761386464084815}

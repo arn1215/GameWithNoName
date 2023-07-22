@@ -22,11 +22,14 @@ public class Character2DController : MonoBehaviour
 
     public Transform firePoint;
 
-    public float spawnRate = 0.5f;
+    public float spawnRate = 0.9f;
 
     public AudioSource audioSrc;
 
     private float timer = 0;
+
+    // POWER UPS
+    public float pewPewTier = 1;
 
     private void Awake()
     {
@@ -71,16 +74,17 @@ public class Character2DController : MonoBehaviour
                 mousePosition.y - screenPoint.y);
 
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        projectileOrigin.rotation = Quaternion.Euler(0, 0, angle);
 
         //firepoint.rotation makes it so lily can fire bullets in the direction the mouse is
+        projectileOrigin.rotation = Quaternion.Euler(0, 0, angle);
+
         if (timer < spawnRate)
         {
             timer += Time.deltaTime;
         }
         else
         {
-            spawnProjectile();
+            SpawnProjectiles();
             timer = 0;
         }
 
@@ -95,14 +99,106 @@ public class Character2DController : MonoBehaviour
         }
     }
 
-    public void speedUp()
+    void SpawnProjectiles()
     {
-        spawnRate -= 0.0008f;
+        int killCount = 0;
+        killCount = KillCount.count / 2;
+        switch (killCount / 2)
+        {
+            case 25:
+                pewPewTier = 2;
+                break;
+            case 50:
+                pewPewTier = 3;
+                break;
+            case 75:
+                pewPewTier = 4;
+                break;
+            default:
+                break;
+        }
+
+        // Spawn projectile in the current direction (TIER 1)
+        GameObject firstProjectile =
+            Instantiate(theProjectile, firePoint.position, firePoint.rotation);
+        SetProjectileOrientation(firstProjectile, firePoint.right);
+        audioSrc.Play();
+
+        // Calculate the direction from firePoint to mouse position
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = firePoint.position.z;
+        Vector3 directionToMouse =
+            camera.ScreenToWorldPoint(mousePosition) - firePoint.position;
+        directionToMouse.Normalize();
+
+        // Calculate the opposite direction
+        Vector3 oppositeDirection = -directionToMouse;
+
+        // Spawn another projectile in the opposite direction (TIER 2)
+        if (pewPewTier > 1)
+        {
+            Quaternion oppositeRotation =
+                Quaternion
+                    .Euler(0,
+                    0,
+                    Mathf.Atan2(oppositeDirection.y, oppositeDirection.x) *
+                    Mathf.Rad2Deg);
+            GameObject secondProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                oppositeRotation);
+            SetProjectileOrientation(secondProjectile, -firePoint.right);
+        }
+
+        // Spawn two more going up and down  (TIER 3)
+        if (pewPewTier > 2)
+        {
+            GameObject thirdProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 90));
+            SetProjectileOrientation(thirdProjectile, -firePoint.right);
+
+            GameObject fourthProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 270));
+            SetProjectileOrientation(fourthProjectile, -firePoint.right);
+        }
+
+        // // Spawn four more going up and down (TIER 4)
+        if (pewPewTier > 3)
+        {
+            GameObject fifthProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 45));
+            SetProjectileOrientation(fifthProjectile, -firePoint.right);
+
+            GameObject sixthProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 135));
+            SetProjectileOrientation(sixthProjectile, -firePoint.right);
+
+            GameObject seventhProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 225));
+            SetProjectileOrientation(seventhProjectile, -firePoint.right);
+
+            GameObject eightProjectile =
+                Instantiate(theProjectile,
+                firePoint.position,
+                Quaternion.Euler(0, 0, 315));
+            SetProjectileOrientation(eightProjectile, -firePoint.right);
+        }
     }
 
-    void spawnProjectile()
+    void SetProjectileOrientation(GameObject projectile, Vector3 direction)
     {
-        Instantiate(theProjectile, firePoint.position, firePoint.rotation);
-        audioSrc.Play();
+        Vector3 localScale = projectile.transform.localScale;
+        localScale.x = Mathf.Abs(localScale.x) * Mathf.Sign(direction.x);
+        projectile.transform.localScale = localScale;
     }
 }

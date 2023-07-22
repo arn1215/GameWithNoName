@@ -29,17 +29,17 @@ public class LilyHealth : MonoBehaviour
     void Update()
     {
         //devtool death
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
             currentHealth = 0;
             DamagePlayer();
         }
 
-        //devtool restart
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        // //devtool restart
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // }
     }
 
     public void DamagePlayer(int damage = 0)

@@ -17,6 +17,7 @@ public class EnemyProjScript : MonoBehaviour
     void Start()
     {
         SeekPlayerLogic();
+        Destroy(gameObject, 0.5f);
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class EnemyProjScript : MonoBehaviour
         if (other.tag == "Player")
         {
             StartCoroutine(HitPlayer());
+          
         }
     }
 
@@ -71,6 +73,6 @@ public class EnemyProjScript : MonoBehaviour
         audio.Play();
         LilyHealth.instance.DamagePlayer(8);
         yield return new WaitForSeconds(.3f);
-        Destroy (gameObject);
+        Destroy(gameObject);
     }
 }

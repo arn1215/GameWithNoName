@@ -82,7 +82,7 @@ public class EnemyScript : MonoBehaviour
                 .Distance(transform.position,
                 Character2DController.instance.transform.position);
 
-        //================================================================shooting logic
+        //shooting logic
         if (isShooter)
         {
             fireCounter -= Time.deltaTime;
@@ -100,7 +100,7 @@ public class EnemyScript : MonoBehaviour
         if (other.tag == "Player")
         {
             // LilyHealth.instance.DamagePlayer();
-            LilyHealth.instance.DamagePlayer();
+            LilyHealth.instance.DamagePlayer(10);
 
             // Calculate the direction of the force
             Vector2 forceDirection =
@@ -131,10 +131,11 @@ public class EnemyScript : MonoBehaviour
             Destroy (gameObject);
             RandomDrop();
 
-            if (Character2DController.instance.spawnRate > 0.3f)
-            {
-                Character2DController.instance.speedUp();
-            }
+            // if (Character2DController.instance.spawnRate > 0.3f)
+            // {
+            //     Character2DController.instance.speedUp();
+            // }
+            // todo why was this here? its erring out now that there are 2 projectiles
         }
     }
 
