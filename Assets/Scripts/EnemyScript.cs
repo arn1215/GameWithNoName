@@ -126,7 +126,7 @@ public class EnemyScript : MonoBehaviour
         if (health <= 0)
         {
             KillCount.count += 1;
-            enemyHit.Play();
+            XPSystem.xpFromKills += 1;
 
             Destroy (gameObject);
             RandomDrop();
