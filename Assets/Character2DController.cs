@@ -32,8 +32,10 @@ public class Character2DController : MonoBehaviour
     int
 
             currentExperience,
-            maxExperience,
-            currentLevel;
+            maxExperience;
+
+    [SerializeField]
+    public static int currentLevel;
 
     // POWER UPS
     public float pewPewTier = 1;

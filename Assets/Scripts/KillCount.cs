@@ -9,6 +9,8 @@ public class KillCount : MonoBehaviour
 
     public Text text;
 
+    public Text experienceText;
+
     // public void IncrementCount()
     // {
     //     count++;
@@ -16,5 +18,7 @@ public class KillCount : MonoBehaviour
     public void Update()
     {
         text.text = "KILLS: " + count.ToString();
+        experienceText.text =
+            "XP: " + Character2DController.currentLevel.ToString();
     }
 }
