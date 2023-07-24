@@ -27,6 +27,5 @@ public class ExperienceManager : MonoBehaviour
     {
         OnExperienceChange?.Invoke(1);
         LilyHealth.instance.HealPlayer(40);
-        print("triggered");
     }
 }
