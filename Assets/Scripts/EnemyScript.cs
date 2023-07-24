@@ -103,7 +103,6 @@ public class EnemyScript : MonoBehaviour
         {
             // LilyHealth.instance.DamagePlayer();
             LilyHealth.instance.DamagePlayer(10);
-            ExperienceManager.Instance.AddExperience (expAmount);
 
             // Calculate the direction of the force
             Vector2 forceDirection =

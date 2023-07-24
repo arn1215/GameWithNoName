@@ -7,27 +7,29 @@ public class XPSystem : MonoBehaviour
 {
     public Slider slider;
 
-    public static int xpLevel = 1;
-
-    public static int xpFromKills = 0;
+    // Reference to the Character2DController script
+    public Character2DController characterController;
 
     void Start()
     {
-        slider.value = 0;
+        // Find and store the Character2DController script in the scene
+        characterController = FindObjectOfType<Character2DController>();
         slider = GetComponent<Slider>();
+        slider.value = characterController.currentExperience;
+        slider.maxValue = characterController.maxExperience;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (slider.value >= 100)
+        // Update slider value and max value using the values from Character2DController
+        slider.value = characterController.currentExperience;
+        slider.maxValue = characterController.maxExperience;
+
+        if (slider.value >= slider.maxValue)
         {
-            xpLevel++;
-            slider.value = 0;
-        }
-        if (xpLevel < 20)
-        {
-            slider.value = KillCount.count * 20;
+            // Level up logic here
+            characterController.LevelUp();
         }
     }
 }

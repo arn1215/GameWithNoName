@@ -29,10 +29,10 @@ public class Character2DController : MonoBehaviour
     private float timer = 0;
 
     [SerializeField]
-    int
+    public int currentExperience;
 
-            currentExperience,
-            maxExperience;
+    [SerializeField]
+    public int maxExperience;
 
     [SerializeField]
     public static int currentLevel;
@@ -65,7 +65,7 @@ public class Character2DController : MonoBehaviour
         }
     }
 
-    private void LevelUp()
+    public void LevelUp()
     {
         currentLevel++;
         currentExperience = 0;
