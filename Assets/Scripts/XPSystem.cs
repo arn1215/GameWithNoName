@@ -27,7 +27,7 @@ public class XPSystem : MonoBehaviour
         }
         if (xpLevel < 20)
         {
-            slider.value = KillCount.count / 2 * 20;
+            slider.value = KillCount.count * 20;
         }
     }
 }

@@ -28,12 +28,46 @@ public class Character2DController : MonoBehaviour
 
     private float timer = 0;
 
+    [SerializeField]
+    int
+
+            currentExperience,
+            maxExperience,
+            currentLevel;
+
     // POWER UPS
     public float pewPewTier = 1;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void OnEnable()
+    {
+        ExperienceManager.Instance.OnExperienceChange += HandleExperienceChange;
+    }
+
+    private void OnDisable()
+    {
+        ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
+    }
+
+    private void HandleExperienceChange(int newExperience)
+    {
+        currentExperience += newExperience;
+        if (currentExperience >= maxExperience)
+        {
+            LevelUp();
+            print("hello from handle experience change");
+        }
+    }
+
+    private void LevelUp()
+    {
+        currentLevel++;
+        currentExperience = 0;
+        maxExperience = currentLevel * 25;
     }
 
     private void Start()
@@ -102,8 +136,8 @@ public class Character2DController : MonoBehaviour
     void SpawnProjectiles()
     {
         int killCount = 0;
-        killCount = KillCount.count / 2;
-        switch (killCount / 2)
+        killCount = KillCount.count;
+        switch (killCount)
         {
             case 25:
                 pewPewTier = 2;
