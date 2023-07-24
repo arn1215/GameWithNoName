@@ -36,6 +36,8 @@ public class EnemyScript : MonoBehaviour
 
     private float fireCounter;
 
+    public int expAmount = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +103,7 @@ public class EnemyScript : MonoBehaviour
         {
             // LilyHealth.instance.DamagePlayer();
             LilyHealth.instance.DamagePlayer(10);
+            ExperienceManager.Instance.AddExperience (expAmount);
 
             // Calculate the direction of the force
             Vector2 forceDirection =
@@ -126,7 +129,7 @@ public class EnemyScript : MonoBehaviour
         if (health <= 0)
         {
             KillCount.count += 1;
-            XPSystem.xpFromKills += 1;
+            ExperienceManager.Instance.AddExperience (expAmount);
 
             Destroy (gameObject);
             RandomDrop();
@@ -142,7 +145,6 @@ public class EnemyScript : MonoBehaviour
     public void RandomDrop()
     {
         float randomValue = Random.Range(0f, 1f);
-        Debug.Log (randomValue);
         if (randomValue <= dropChance)
         {
             Instantiate(healthAsset, transform.position, transform.rotation);

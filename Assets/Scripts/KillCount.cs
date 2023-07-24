@@ -15,8 +15,6 @@ public class KillCount : MonoBehaviour
     // }
     public void Update()
     {
-        int halved = count / 2;
-
-        text.text = "KILLS: " + halved.ToString();
+        text.text = "KILLS: " + count.ToString();
     }
 }
