@@ -101,7 +101,6 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // LilyHealth.instance.DamagePlayer();
             LilyHealth.instance.DamagePlayer(10);
 
             // Calculate the direction of the force

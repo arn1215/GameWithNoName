@@ -29,13 +29,18 @@ public class Character2DController : MonoBehaviour
     private float timer = 0;
 
     [SerializeField]
-    public int currentExperience;
+    public int currentExperience = 0;
 
     [SerializeField]
-    public int maxExperience;
+    public static int currentLevel = 1;
 
-    [SerializeField]
-    public static int currentLevel;
+    public int maxExperience = 5; // Initial value for level 1
+
+    public int experienceToNext = 5; // Initial value for level 1
+
+    public int additionalExperiencePerLevel = 10;
+
+    public int experienceAfterLevel20 = 791;
 
     // POWER UPS
     public float pewPewTier = 1;
@@ -55,21 +60,59 @@ public class Character2DController : MonoBehaviour
         ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
     }
 
-    private void HandleExperienceChange(int newExperience)
+    // Function to gain experience points
+    public void HandleExperienceChange(int experiencePoints)
     {
-        currentExperience += newExperience;
-        if (currentExperience >= maxExperience)
+        currentExperience += experiencePoints;
+
+        // Check for level up
+        if (currentExperience >= experienceToNext)
         {
             LevelUp();
-            print("hello from handle experience change");
         }
     }
 
     public void LevelUp()
     {
         currentLevel++;
-        currentExperience = 0;
-        maxExperience = currentLevel * 25;
+        currentExperience -= experienceToNext;
+
+        // Calculate the experience needed for the next level based on the data provided
+        int difference = 10; // Default difference value for levels 1 to 20
+        if (currentLevel <= 20)
+        {
+            difference = 10;
+        }
+        else if (currentLevel == 21)
+        {
+            difference = 795;
+        }
+        else if (currentLevel >= 22 && currentLevel <= 200)
+        {
+            // Calculate the difference using the formula provided for levels beyond 21
+            difference = (int)(11 + Mathf.Floor(currentLevel / 10f)) * 13;
+        }
+
+        maxExperience += difference;
+        experienceToNext += difference;
+
+        switch (currentLevel)
+        {
+            case 5:
+                pewPewTier = 2;
+                break;
+            case 10:
+                pewPewTier = 3;
+                break;
+            case 20:
+                pewPewTier = 4;
+                break;
+            default:
+                break;
+        }
+
+        // Perform any additional level up logic here
+        Debug.Log("Congratulations! You reached Level " + currentLevel);
     }
 
     private void Start()
@@ -137,23 +180,23 @@ public class Character2DController : MonoBehaviour
 
     void SpawnProjectiles()
     {
-        int killCount = 0;
-        killCount = KillCount.count;
-        switch (killCount)
-        {
-            case 25:
-                pewPewTier = 2;
-                break;
-            case 50:
-                pewPewTier = 3;
-                break;
-            case 75:
-                pewPewTier = 4;
-                break;
-            default:
-                break;
-        }
-
+        // int killCount = 0;
+        // killCount = KillCount.count;
+        // switch (killCount)
+        // {
+        //     case 25:
+        //         pewPewTier = 2;
+        //         break;
+        //     case 50:
+        //         pewPewTier = 3;
+        //         break;
+        //     case 75:
+        //         pewPewTier = 4;
+        //         break;
+        //     default:
+        //         break;
+        // }
+        // deprecated
         // Spawn projectile in the current direction (TIER 1)
         GameObject firstProjectile =
             Instantiate(theProjectile, firePoint.position, firePoint.rotation);
