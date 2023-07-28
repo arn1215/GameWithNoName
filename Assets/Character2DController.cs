@@ -38,12 +38,14 @@ public class Character2DController : MonoBehaviour
 
     public int experienceToNext = 5; // Initial value for level 1
 
+    public AchievementMenu achievementMenu;
+
     public int additionalExperiencePerLevel = 10;
 
     public int experienceAfterLevel20 = 791;
 
     // POWER UPS
-    public float pewPewTier = 1;
+    public int pewPewTier = 1;
 
     private void Awake()
     {
@@ -111,7 +113,7 @@ public class Character2DController : MonoBehaviour
                 break;
         }
 
-        // Perform any additional level up logic here
+        achievementMenu.pauseGame();
         Debug.Log("Congratulations! You reached Level " + currentLevel);
     }
 
