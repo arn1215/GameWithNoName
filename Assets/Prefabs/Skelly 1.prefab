@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7266159523905591240}
   - component: {fileID: 7266159523905591223}
   - component: {fileID: 2987371354356488001}
+  - component: {fileID: 2866500368831182085}
   m_Layer: 0
   m_Name: Skelly 1
   m_TagString: Enemy
@@ -95,6 +96,7 @@ MonoBehaviour:
   projectile: {fileID: 8587066257291433140, guid: a0c28aa4555715b47afaf4a1df72a992, type: 3}
   firePoint: {fileID: 7472240766418978718}
   fireRate: 2.97
+  expAmount: 1
 --- !u!61 &7266159523905591241
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,6 +175,22 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.27, y: 0.26}
+  m_Direction: 0
+--- !u!70 &2866500368831182085
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266159523905591245}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
